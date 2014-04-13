@@ -22,6 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:label="CameraActivity" android:name=".CameraActivity"/>
+        <activity android:label="UploadActivity" android:name=".UploadActivity"/>
+        <activity android:label="TransportActivity" android:name=".TransportActivity"/>
+        <activity android:label="FilterActivity" android:name=".FilterActivity"/>
     </application>
 
 </manifest>
