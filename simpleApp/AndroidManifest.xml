@@ -22,9 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:label="CameraActivity" android:name=".CameraActivity"/>
-        <activity android:label="UploadActivity" android:name=".UploadActivity"/>
-        <activity android:label="TransportActivity" android:name=".TransportActivity"/>
+        <activity android:label="CameraActivity" android:name="com.example.camera.CameraActivity"/>
+        <activity android:label="UploadActivity" android:name="com.example.upload.UploadActivity"/>
+        <activity android:label="TransportActivity" android:name="com.example.transport.TransportActivity"/>
         <activity android:label="FilterActivity" android:name=".FilterActivity"/>
     </application>
 

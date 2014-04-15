@@ -1,4 +1,9 @@
-package com.example.simpleapp;
+package com.example.transport;
+
+import com.example.simpleapp.R;
+import com.example.simpleapp.R.id;
+import com.example.simpleapp.R.layout;
+import com.example.simpleapp.R.menu;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -22,10 +27,6 @@ public class TransportActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		if (savedInstanceState == null) {
-			getSupportFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
-		}
 	}
 
 	@Override

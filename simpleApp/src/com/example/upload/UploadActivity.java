@@ -1,4 +1,4 @@
-package com.example.simpleapp;
+package com.example.upload;
 
 import com.example.simpleapp.R;
 import com.example.simpleapp.R.id;
@@ -15,20 +15,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+
 /*
- * take a picture and save it
+ * upload pictures to facebook
  */
-public class CameraActivity extends ActionBarActivity {
+
+public class UploadActivity extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		if (savedInstanceState == null) {
-			getSupportFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
-		}
 	}
 
 	@Override
