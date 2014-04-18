@@ -16,19 +16,19 @@
         android:text="camera" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/fileBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/cameraBtn"
-        android:text="Button" />
+        android:text="File Manager" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/button2"
+        android:layout_below="@+id/fileBtn"
         android:text="Button" />
 
     <Button

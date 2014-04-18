@@ -1,12 +1,15 @@
 package com.example.simpleapp;
 
 import com.example.camera.CameraActivity;
+import com.example.gallery.FileListActivity;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +22,7 @@ import android.os.Build;
 public class MainActivity extends ActionBarActivity {
 
 	Button goToCameraButton;
+	Button fileManagerButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +35,22 @@ public class MainActivity extends ActionBarActivity {
 		}*/
 		
 		goToCameraButton = (Button)findViewById(R.id.cameraBtn);
+		fileManagerButton = (Button)findViewById(R.id.fileBtn);
+		
 		goToCameraButton.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		fileManagerButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, CameraActivity.class);
+				intent.setClass(MainActivity.this, FileListActivity.class);
 				startActivity(intent);
 			}
 		});
