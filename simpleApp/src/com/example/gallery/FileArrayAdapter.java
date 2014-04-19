@@ -56,9 +56,7 @@ public class FileArrayAdapter extends ArrayAdapter<Albumb> {
 			ImageView imageCity = (ImageView) v.findViewById(R.id.fd_Icon1);
 
 			String type = item.getImage();
-			Log.e("state", "ok");
 			if (type.equalsIgnoreCase("directory_icon")) {
-				Log.e("state", "icon");
 				String uri = "drawable/" + item.getImage();
 				int imageResource = c.getResources().getIdentifier(uri, null,
 						c.getPackageName());
@@ -73,10 +71,6 @@ public class FileArrayAdapter extends ArrayAdapter<Albumb> {
 					Drawable image = c.getResources().getDrawable(imageResource);
 					imageCity.setImageDrawable(image);
 				} else {
-					Integer width = bmp.getWidth();
-					Integer height = bmp.getHeight();
-					Log.e("width",  width.toString());
-					Log.e("height",  height.toString());
 					Bitmap tempBitmap = Bitmap.createScaledBitmap(bmp, 34, 60, true);
 					imageCity.setImageBitmap(tempBitmap);
 				}

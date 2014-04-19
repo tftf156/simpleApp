@@ -21,58 +21,70 @@ public class FileListActivity extends ListActivity {
 
 	private File currentDir;
 	private FileArrayAdapter adapter;
+	private List<Albumb> dir;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		dir = new ArrayList<Albumb>();
 		currentDir = new File("/sdcard/DCIM/");
 		fill(currentDir);
+		currentDir = new File("/sdcard/Pictures/");
+		fill(currentDir);
+		
+		adapter = new FileArrayAdapter(FileListActivity.this, R.layout.filelist, dir);
+		this.setListAdapter(adapter);
 	}
 
 	private void fill(File f) {
 		File[] dirs = f.listFiles();
+		Integer numberInteger = dirs.length;
+		Log.e("file number", numberInteger.toString());
 		this.setTitle("Current Dir: " + f.getName());
-		List<Albumb> dir = new ArrayList<Albumb>();
 		List<Albumb> fls = new ArrayList<Albumb>();
+		char firstChar;
+		int buf;
+		
 		try {
 			for (File ff : dirs) {
 				String name = ff.getName();
 				Date lastModDate = new Date(ff.lastModified());
 				DateFormat formater = DateFormat.getDateTimeInstance();
 				String date_modify = formater.format(lastModDate);
-				/*
-				 * Note: Remove this
-				 * name.equalsIgnoreCase("Personal" if u
-				 * want to list all ur sd card file and folder
-				 */
-				if (ff.isDirectory()) {
-
-					File[] fbuf = ff.listFiles();
-					int buf = 0;
-					if (fbuf != null) {
-						buf = fbuf.length;
-					} else
-						buf = 0;
-					String num_item = String.valueOf(buf);
-					if (buf == 0)
-						num_item = num_item + " item";
-					else
-						num_item = num_item + " items";
-
-					// String formated = lastModDate.toString();
-					dir.add(new Albumb(ff.getName(), num_item, date_modify, ff
-							.getAbsolutePath(), "directory_icon"));
-
-					Log.e("in", ff.getAbsolutePath());
-				} else {
+				firstChar = name.charAt(0);
+				if (firstChar != '.')
+				{
 					/*
 					 * Note: Remove this
-					 * f.getName().equalsIgnoreCase("Personal"
-					 * if u want to list all ur sd card file and folder
+					 * name.equalsIgnoreCase("Personal" if u
+					 * want to list all ur sd card file and folder
 					 */
-						fls.add(new Albumb(ff.getName(), ff.length() + " Byte",
-								date_modify, ff.getAbsolutePath(), "file_icon"));
+					if (ff.isDirectory()) {
+						File[] fbuf = ff.listFiles();
+						buf = 0;
+						if (fbuf != null) 
+						{
+							buf = fbuf.length;
+						}
+						String num_item = String.valueOf(buf);
+						if (buf != 0)
+						{
+							num_item = num_item + " items";
+							dir.add(new Albumb(ff.getName(), num_item, date_modify, ff
+								.getAbsolutePath(), "directory_icon"));
+						}
+						
+					} 
+					else {
+						/*
+						 * Note: Remove this
+						 * f.getName().equalsIgnoreCase("Personal"
+						 * if u want to list all ur sd card file and folder
+						 */
+							fls.add(new Albumb(ff.getName(), ff.length() + " Byte",
+									date_modify, ff.getAbsolutePath(), "file_icon"));
 					
+					}
 				}
 			}
 		} catch (Exception e) {
@@ -80,12 +92,7 @@ public class FileListActivity extends ListActivity {
 		}
 		Collections.sort(dir);
 		Collections.sort(fls);
-		dir.addAll(fls);
-		if (!f.getName().equalsIgnoreCase("sdcard"))
-			dir.add(0, new Albumb("..", "Parent Directory", "", f.getParent(),
-					"directory_up"));
-		adapter = new FileArrayAdapter(FileListActivity.this, R.layout.filelist, dir);
-		this.setListAdapter(adapter);
+		dir.addAll(fls);		
 	}
 
 	@Override
