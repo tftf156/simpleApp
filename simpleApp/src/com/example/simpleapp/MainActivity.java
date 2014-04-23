@@ -1,7 +1,7 @@
 package com.example.simpleapp;
 
 import com.example.camera.CameraActivity;
-import com.example.gallery.FileListActivity;
+import com.example.gallery.FileList.FileListActivity;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;

@@ -1,4 +1,4 @@
-package com.example.gallery;
+package com.example.gallery.FileList;
 
 import java.util.List;
 

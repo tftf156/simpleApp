@@ -23,7 +23,8 @@
             </intent-filter>
         </activity>
         <activity android:label="CameraActivity" android:name="com.example.camera.CameraActivity"/>
-        <activity android:label="FileListActivity" android:name="com.example.gallery.FileListActivity"/>
+        <activity android:label="FileListActivity" android:name="com.example.gallery.FileList.FileListActivity"/>
+        <activity android:label="GridViewActivity" android:name="com.example.gallery.GridView.GridViewActivity"/>
         <activity android:label="UploadActivity" android:name="com.example.upload.UploadActivity"/>
         <activity android:label="TransportActivity" android:name="com.example.transport.TransportActivity"/>
         <activity android:label="FilterActivity" android:name=".FilterActivity"/>

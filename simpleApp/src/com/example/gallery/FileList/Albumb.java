@@ -1,4 +1,4 @@
-package com.example.gallery;
+package com.example.gallery.FileList;
 
 public class Albumb implements Comparable<Albumb>{
 	private String name;

@@ -1,4 +1,4 @@
-package com.example.gallery;
+package com.example.gallery.FileList;
 
 import java.io.File;
 import java.sql.Date;
@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import java.text.DateFormat;
 
+import com.example.gallery.GridView.GridViewActivity;
 import com.example.simpleapp.R;
 
 import android.os.Bundle;
@@ -22,6 +23,7 @@ public class FileListActivity extends ListActivity {
 	private File currentDir;
 	private FileArrayAdapter adapter;
 	private List<Albumb> dir;
+	private Intent intent;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -102,8 +104,12 @@ public class FileListActivity extends ListActivity {
 		Albumb o = adapter.getItem(position);
 		if (o.getImage().equalsIgnoreCase("directory_icon")
 				|| o.getImage().equalsIgnoreCase("directory_up")) {
-			currentDir = new File(o.getPath());
-			fill(currentDir);
+			//currentDir = new File(o.getPath());
+			Log.e("click path", o.getPath());
+			//fill(currentDir);
+			intent = new Intent(FileListActivity.this, GridViewActivity.class);
+			intent.putExtra("path", o.getPath());
+			startActivity(intent);
 		}
 	}
 
