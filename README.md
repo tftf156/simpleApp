@@ -7,16 +7,34 @@
 
 com.example.simpleApp：
 	MainActivity--主頁面
-	FilterActivity--濾鏡頁面  (暫時)
 
 com.example.camera：
-	CameraActivity--照相頁面
+	CameraActivity--照相
+	FilterActivity--濾鏡
+
+com.example.gallery：
+	FileList：
+		Album--自訂物件
+		FileArrayAdapter--FileList Adapter
+		FileListActivity--列出有照片的資料夾
+	GridView：
+		GridViewActivity--以GridView的樣式列出照片
+		GridViewAdapter--GridView Adapter
+		ImageItem--自訂物件
 
 com.example.upload：
-	UploadActiviry--上傳頁面
+	UploadActiviry--上傳
 
 com.example.transport：
-	TransportActivity--傳輸頁面
+	TransportActivity--傳輸
+
+layout：
+	activity_main--主頁面
+	camera--照相
+	filelist--File Manager
+	fragment_main--(不知)
+	gridview--GridView
+	row_grid--GirdView每格的內容layout
 
 
 
