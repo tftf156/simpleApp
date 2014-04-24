@@ -27,6 +27,13 @@ public class FileListActivity extends ListActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+	}
+	
+
+	@Override
+	protected void onStart() {
+		super.onStart();
 		dir = new ArrayList<Albumb>();
 		currentDir = new File("/sdcard/DCIM/");
 		fill(currentDir);
@@ -111,5 +118,4 @@ public class FileListActivity extends ListActivity {
 			startActivity(intent);
 		}
 	}
-
 }

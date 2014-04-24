@@ -12,18 +12,32 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.RelativeLayout;
 
 public class GridViewActivity extends Activity{
 
+	private static int VISIBLE = 0;
+	private static int INVISIBLE = 4;
+	
 	private GridView gridView;
 	private GridViewAdapter customGridAdapter;
 	private Intent intent;
 	private String path;
 	private File targetFile;
+	private DisplayMetrics displayMetrics;
+	private Integer phoneWidth, phoneHeight;
+	private RelativeLayout functions;
+	private FrameLayout deleteFrameLayout, 
+		shareFrameLayout, chopFrameLayout;
+	private DeleteAlertDialog deleteAlertDialog;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,21 +47,41 @@ public class GridViewActivity extends Activity{
 		intent = this.getIntent();
 		path = intent.getStringExtra("path");
 		targetFile = new File(path);
+		/*displayMetrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+		phoneWidth = displayMetrics.widthPixels;
+		phoneHeight = displayMetrics.heightPixels;*/
 		
 		gridView = (GridView) findViewById(R.id.gridView);
 		customGridAdapter = new GridViewAdapter(this, R.layout.row_grid, getData());
 		gridView.setAdapter(customGridAdapter);
 
 		gridView.setOnItemClickListener(new OnItemClickListener() {
-			/* (non-Javadoc)
-			 * @see android.widget.AdapterView.OnItemClickListener#onItemClick(android.widget.AdapterView, android.view.View, int, long)
-			 */
+			
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
 				customGridAdapter.changeState(position, gridView);
+				if(customGridAdapter.isItemSelected())
+					functions.setVisibility(VISIBLE);
+				else
+					functions.setVisibility(INVISIBLE);
+			}
+			
+		});
+				
+		functions = (RelativeLayout) findViewById(R.id.functions);
+		functions.setVisibility(INVISIBLE);
+		
+		deleteAlertDialog = new DeleteAlertDialog(this, customGridAdapter, gridView);
+		
+		deleteFrameLayout = (FrameLayout) findViewById(R.id.deleteFrameLayout);
+		deleteFrameLayout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				deleteAlertDialog.onShow(functions);
 			}
 		});
-
 	}
 
 	private ArrayList<ImageItem> getData() 
@@ -58,7 +92,7 @@ public class GridViewActivity extends Activity{
 		for (File file : dirs)
 		{
 			Bitmap bitmap = getBitmap(Uri.fromFile(file));
-			imageItems.add(new ImageItem(bitmap, file.getName()));
+			imageItems.add(new ImageItem(bitmap, file.getName(), file.getAbsolutePath()));
 		}
 		
 		return imageItems;

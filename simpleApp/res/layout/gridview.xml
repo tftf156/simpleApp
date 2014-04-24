@@ -3,16 +3,79 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-	 <GridView
-	     android:id="@+id/gridView"
-	     android:layout_width="fill_parent"
-	     android:layout_height="wrap_content"
-	     android:columnWidth="100dp"
-	     android:gravity="center"
-	     android:numColumns="auto_fit"
-	     android:stretchMode="columnWidth" >
 
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:columnWidth="100dp"
+        android:gravity="center"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth" >
     </GridView>
+
+    <RelativeLayout
+        android:id="@+id/functions"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@color/black" >
+        
+        <FrameLayout
+            android:id="@+id/deleteFrameLayout"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:clickable="true" >
+	
+	        <ImageView
+	            android:id="@+id/imageView1"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center"
+	            android:src="@drawable/delete" />
+
+	    </FrameLayout>
+	
+	    <FrameLayout
+            android:id="@+id/shareFrameLayout"
+	        android:layout_width="100dp"
+	        android:layout_height="50dp"
+	        android:layout_alignParentBottom="true"
+	        android:layout_alignParentRight="true"
+            android:clickable="true" >
+	
+	        <ImageView
+	            android:id="@+id/ImageView02"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center"
+	            android:src="@drawable/ic_launcher" />
+
+	    </FrameLayout>
+	
+	    <FrameLayout
+            android:id="@+id/chopFrameLayout"
+	        android:layout_width="100dp"
+	        android:layout_height="50dp"
+	        android:layout_alignParentBottom="true"
+	        android:layout_centerHorizontal="true"
+	        android:foregroundGravity="bottom|center"
+            android:clickable="true" >
+	
+	        <ImageView
+	            android:id="@+id/ImageView01"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center"
+	            android:src="@drawable/ic_launcher" />
+
+	    </FrameLayout>
     
+    </RelativeLayout>
+
 </RelativeLayout>

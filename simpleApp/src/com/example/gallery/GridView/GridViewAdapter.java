@@ -1,5 +1,6 @@
 package com.example.gallery.GridView;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -107,16 +108,49 @@ public class GridViewAdapter extends ArrayAdapter<ImageItem>{
         return la;    //返回叠加后的图    
 	}
 	
+	private void changeColor(GridView gridView)
+	{
+		for(int i = 0; i < imageSelect.size(); i++)
+			if(imageSelect.elementAt(i))
+				gridView.getChildAt(i).setBackgroundColor(Color.argb(128, 0, 171, 234));
+			else
+				gridView.getChildAt(i).setBackgroundColor(Color.argb(0, 0, 0, 0));
+	}
+	
 	public void changeState(int position, GridView gridView)
 	{    
 		imageSelect.setElementAt(!imageSelect.elementAt(position), position);
-		if(imageSelect.elementAt(position))
-			gridView.getChildAt(position).setBackgroundColor(Color.argb(128, 0, 171, 234));
-		else
-			gridView.getChildAt(position).setBackgroundColor(Color.argb(0, 0, 0, 0));
+		changeColor(gridView);
 		
 		notifyDataSetChanged();
-	 }
+	}
+	
+	public boolean isItemSelected()
+	{
+		for (Boolean boolean1 : imageSelect)
+			if(boolean1)
+				return true;
+		
+		return false;
+	}
+	
+	public void deleteAllSelectedItems(GridView gridView)
+	{
+		for(int i = 0; i < imageSelect.size(); i++)
+		{
+			if(imageSelect.elementAt(i))
+			{
+				File file = new File(data.get(i).getPath());
+				file.delete();
+				data.remove(i);
+				imageSelect.remove(i);
+				i--;
+			}
+		}
+		changeColor(gridView);
+		
+		notifyDataSetChanged();
+	}
 
 	static class ViewHolder {
 		TextView imageTitle;
