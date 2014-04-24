@@ -1,12 +1,7 @@
 package com.example.wifi;
 
 import com.example.simpleapp.R;
-import com.example.simpleapp.R.id;
-import com.example.simpleapp.R.layout;
-import com.example.simpleapp.R.menu;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.app.TabActivity;
 import android.content.Intent;
@@ -18,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
-import android.os.Build;
 
 public class WifiActivity extends TabActivity {
 
@@ -38,14 +32,14 @@ public class WifiActivity extends TabActivity {
 	{
 		TabHost thost = getTabHost();
 		Intent intent = new Intent();
-		intent.setClass(WifiActivity.this, ConnectDevicesTabWidget.class);
+		intent.setClass(WifiActivity.this, ConnectDevicesTabWidgetActivity.class);
 		TabSpec ts = thost.newTabSpec("tab1");
 		ts.setContent(intent);
 		ts.setIndicator("連線裝置");
 		thost.addTab(ts);
 		
 		intent = new Intent();
-		intent.setClass(WifiActivity.this, RecieveListTabWidget.class);
+		intent.setClass(WifiActivity.this, RecieveListTabWidgetActivity.class);
 		TabSpec ts2 = thost.newTabSpec("tab2");
 		ts2.setContent(intent);
 		ts2.setIndicator("接收清單");

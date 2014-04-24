@@ -26,27 +26,27 @@
             android:name="com.example.camera.CameraActivity"
             android:label="CameraActivity" />
         <activity
-            android:name="com.example.gallery.FileListActivity"
+            android:name="com.example.gallery.FileList.FileListActivity"
             android:label="FileListActivity" />
+        <activity
+            android:name="com.example.gallery.GridView.GridViewActivity"
+            android:label="GridViewActivity" />
         <activity
             android:name="com.example.upload.UploadActivity"
             android:label="UploadActivity" />
         <activity
-            android:name="com.example.transport.TransportActivity"
-            android:label="TransportActivity" />
-        <activity
-            android:name="com.example.simpleapp.FilterActivity"
+            android:name="com.example.camera.FilterActivity"
             android:label="FilterActivity" />
         <activity
             android:name="com.example.wifi.WifiActivity"
             android:label="@string/title_activity_wifi" >
         </activity>
         <activity
-            android:name="com.example.wifi.ConnectDevicesTabWidget"
+            android:name="com.example.wifi.ConnectDevicesTabWidgetActivity"
             android:label="ConnectDevicesTabWidget" >
         </activity>
         <activity
-            android:name="com.example.wifi.RecieveListTabWidget"
+            android:name="com.example.wifi.RecieveListTabWidgetActivity"
             android:label="RecieveListTabWidget" >
         </activity>
         <activity

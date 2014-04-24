@@ -27,7 +27,7 @@ public class GridViewAdapter extends ArrayAdapter<ImageItem>{
 	private Context context;
 	private int layoutResourceId;
 	private ArrayList<ImageItem> data = new ArrayList<ImageItem>();
-	private Vector<Boolean> imageSelect = new Vector<>();
+	private Vector<Boolean> imageSelect = new Vector<Boolean>();
 
 	public GridViewAdapter(Context context, int layoutResourceId,
 			ArrayList<ImageItem> data) {
