@@ -11,7 +11,6 @@ import com.example.gallery.GridView.GridViewActivity;
 import com.example.simpleapp.R;
 
 import android.os.Bundle;
-import android.os.Environment;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.util.Log;
