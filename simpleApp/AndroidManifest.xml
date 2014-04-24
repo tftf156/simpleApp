@@ -55,7 +55,7 @@
             android:label="@string/title_activity_send_file" >
         </activity>
         <activity
-            android:name="com.example.chopImage.ChopPhotoActivity"
+            android:name="com.example.gallery.ChopPhotoActivity"
             android:label="@string/title_activity_chop_photo" >
         </activity>
         <activity 

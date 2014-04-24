@@ -1,4 +1,4 @@
-package com.example.chopImage;
+package com.example.gallery;
 
 import com.example.simpleapp.R;
 import com.example.simpleapp.R.id;
