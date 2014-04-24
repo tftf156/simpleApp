@@ -22,12 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="com.example.camera.CameraActivity"
             android:label="CameraActivity" />
         <activity
-            android:name="com.example.gallery.FileList.FileListActivity"
+            android:name="com.example.gallery.FileListActivity"
             android:label="FileListActivity" />
         <activity
             android:name="com.example.upload.UploadActivity"
@@ -36,7 +35,7 @@
             android:name="com.example.transport.TransportActivity"
             android:label="TransportActivity" />
         <activity
-            android:name="com.example.camera.FilterActivity"
+            android:name="com.example.simpleapp.FilterActivity"
             android:label="FilterActivity" />
         <activity
             android:name="com.example.wifi.WifiActivity"
@@ -58,11 +57,6 @@
             android:name="com.example.chopImage.ChopPhotoActivity"
             android:label="@string/title_activity_chop_photo" >
         </activity>
-        <activity 
-	    android:name="com.example.gallery.GridView.GridViewActivity" 
-	    android:label="GridViewActivity">
-	</activity>
-
     </application>
 
 </manifest>
