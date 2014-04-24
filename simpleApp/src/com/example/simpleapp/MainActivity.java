@@ -1,7 +1,9 @@
 package com.example.simpleapp;
 
 import com.example.camera.CameraActivity;
+import com.example.chopImage.ChopPhotoActivity;
 import com.example.gallery.FileListActivity;
+import com.example.wifi.*;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -23,6 +25,7 @@ public class MainActivity extends ActionBarActivity {
 
 	Button goToCameraButton;
 	Button fileManagerButton;
+	Button wifiDirectButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,7 @@ public class MainActivity extends ActionBarActivity {
 		
 		goToCameraButton = (Button)findViewById(R.id.cameraBtn);
 		fileManagerButton = (Button)findViewById(R.id.fileBtn);
+		wifiDirectButton = (Button)findViewById(R.id.wifiBtn);
 		
 		goToCameraButton.setOnClickListener(new OnClickListener() {
 			
@@ -51,6 +55,17 @@ public class MainActivity extends ActionBarActivity {
 			public void onClick(View v) {
 				Intent intent = new Intent();
 				intent.setClass(MainActivity.this, FileListActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		wifiDirectButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				//intent.setClass(MainActivity.this, ChopPhotoActivity.class);
+				intent.setClass(MainActivity.this, WifiActivity.class);
 				startActivity(intent);
 			}
 		});

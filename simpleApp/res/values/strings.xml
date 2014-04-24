@@ -4,5 +4,10 @@
     <string name="app_name">simpleApp</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_wifi">WifiActivity</string>
+    <string name="ConnectDevices">連線裝置</string>
+    <string name="RecieveList">接收清單</string>
+    <string name="title_activity_send_file">SendFileActivity</string>
+    <string name="title_activity_chop_photo">ChopPhotoActivity</string>
 
 </resources>

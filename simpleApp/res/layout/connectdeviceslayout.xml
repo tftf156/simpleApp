@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/selfDeviceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="53dp"
+        android:text="本端機器"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageButton1"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/imageButton1"
+        android:src="@drawable/searchicon" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/selfDeviceTextView"
+        android:background="#000000" />
+
+    <TextView
+        android:id="@+id/selfDeviceNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/selfDeviceTextView"
+        android:layout_below="@+id/view1"
+        android:layout_marginTop="14dp"
+        android:text="名稱 : "
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/selfDeviceStatusTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/selfDeviceNameTextView"
+        android:layout_below="@+id/selfDeviceNameTextView"
+        android:text="狀態 : "
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/selfNametextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/selfDeviceNameTextView"
+        android:layout_alignBottom="@+id/selfDeviceNameTextView"
+        android:layout_toRightOf="@+id/selfDeviceNameTextView"
+        android:text="Name"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/selfStatusTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/selfDeviceStatusTextView"
+        android:layout_alignBottom="@+id/selfDeviceStatusTextView"
+        android:layout_alignLeft="@+id/selfNametextView"
+        android:text="Status"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/view1"
+        android:layout_toLeftOf="@+id/imageButton2"
+        android:src="@drawable/wifiicon" />
+
+    <TextView
+        android:id="@+id/friendDeviceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/selfDeviceStatusTextView"
+        android:layout_below="@+id/selfDeviceStatusTextView"
+        android:layout_marginTop="14dp"
+        android:text="遠端節點"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <View
+        android:id="@+id/View01"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/friendDeviceTextView"
+        android:background="#000000" />
+
+    <GridView
+        android:id="@+id/gridView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/View01"
+        android:numColumns="3" >
+
+    </GridView>
+
+</RelativeLayout>
