@@ -47,10 +47,6 @@ public class GridViewActivity extends Activity{
 		intent = this.getIntent();
 		path = intent.getStringExtra("path");
 		targetFile = new File(path);
-		/*displayMetrics = new DisplayMetrics();
-		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-		phoneWidth = displayMetrics.widthPixels;
-		phoneHeight = displayMetrics.heightPixels;*/
 		
 		gridView = (GridView) findViewById(R.id.gridView);
 		customGridAdapter = new GridViewAdapter(this, R.layout.row_grid, getData());
@@ -88,11 +84,16 @@ public class GridViewActivity extends Activity{
 	{
 		final ArrayList<ImageItem> imageItems = new ArrayList<ImageItem>();
 		File[] dirs = targetFile.listFiles();
+		String[] spaceStrings;
 		
 		for (File file : dirs)
 		{
-			Bitmap bitmap = getBitmap(Uri.fromFile(file));
-			imageItems.add(new ImageItem(bitmap, file.getName(), file.getAbsolutePath()));
+			spaceStrings = file.getName().split("\\.");
+			if(spaceStrings[spaceStrings.length - 1].equals("jpg"))
+			{
+				Bitmap bitmap = getBitmap(Uri.fromFile(file));
+				imageItems.add(new ImageItem(bitmap, file.getName(), file.getAbsolutePath()));
+			}
 		}
 		
 		return imageItems;

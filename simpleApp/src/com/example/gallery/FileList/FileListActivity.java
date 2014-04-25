@@ -34,6 +34,7 @@ public class FileListActivity extends ListActivity {
 	@Override
 	protected void onStart() {
 		super.onStart();
+		
 		dir = new ArrayList<Albumb>();
 		currentDir = new File("/sdcard/DCIM/");
 		fill(currentDir);
@@ -52,13 +53,23 @@ public class FileListActivity extends ListActivity {
 		List<Albumb> fls = new ArrayList<Albumb>();
 		char firstChar;
 		int buf;
+		String name;
+		Date lastModDate;
+		DateFormat formater;
+		String date_modify;
+		Boolean imageBoolean = false;
+		String[] spaceStrings;
+		String num_item;
+		Integer count = 0;
+		ArrayList<String> nameStrings = new ArrayList<String>();
+		Integer index;
 		
 		try {
 			for (File ff : dirs) {
-				String name = ff.getName();
-				Date lastModDate = new Date(ff.lastModified());
-				DateFormat formater = DateFormat.getDateTimeInstance();
-				String date_modify = formater.format(lastModDate);
+				name = ff.getName();
+				lastModDate = new Date(ff.lastModified());
+				formater = DateFormat.getDateTimeInstance();
+				date_modify = formater.format(lastModDate);
 				firstChar = name.charAt(0);
 				if (firstChar != '.')
 				{
@@ -74,7 +85,7 @@ public class FileListActivity extends ListActivity {
 						{
 							buf = fbuf.length;
 						}
-						String num_item = String.valueOf(buf);
+						num_item = String.valueOf(buf);
 						if (buf != 0)
 						{
 							num_item = num_item + " items";
@@ -89,18 +100,43 @@ public class FileListActivity extends ListActivity {
 						 * f.getName().equalsIgnoreCase("Personal"
 						 * if u want to list all ur sd card file and folder
 						 */
-							fls.add(new Albumb(ff.getName(), ff.length() + " Byte",
-									date_modify, ff.getAbsolutePath(), "file_icon"));
-					
+							
+						/*fls.add(new Albumb(ff.getName(), ff.length() + " Byte",
+									date_modify, ff.getAbsolutePath(), "file_icon"));*/
+						Log.e("image", "yes");
+						imageBoolean = true;
 					}
 				}
 			}
-		} catch (Exception e) {
-
-		}
-		Collections.sort(dir);
-		Collections.sort(fls);
-		dir.addAll(fls);		
+			if(imageBoolean)
+			{
+				
+				lastModDate = new Date(f.lastModified());
+				formater = DateFormat.getDateTimeInstance();
+				date_modify = formater.format(lastModDate);
+				
+				for(File file : dirs)
+				{
+					name = file.getName();
+					spaceStrings = name.split("\\.");
+					if(spaceStrings[spaceStrings.length - 1].equals("jpg"))
+					{
+						count++;
+						Log.e("in", count.toString());
+					}
+				}
+				
+				if(count > 1)
+					num_item = String.valueOf(count) + "items";
+				else
+					num_item = String.valueOf(count) + "item";
+				dir.add(new Albumb(f.getName(), num_item, date_modify, f.getAbsolutePath(), "directory_icon"));
+				
+			}
+		} 
+		catch (Exception e) 
+		{}
+		Collections.sort(dir);	
 	}
 
 	@Override
