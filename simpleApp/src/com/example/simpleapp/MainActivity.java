@@ -2,7 +2,6 @@ package com.example.simpleapp;
 
 import com.example.gallery.FileList.FileListActivity;
 import com.example.wifi.*;
-
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
@@ -25,11 +24,11 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		
 		/*if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
-		}*/
+		}*/		
 		
 		goToCameraButton = (Button)findViewById(R.id.cameraBtn);
 		fileManagerButton = (Button)findViewById(R.id.fileBtn);
@@ -64,7 +63,7 @@ public class MainActivity extends ActionBarActivity {
 			}
 		});
 	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 

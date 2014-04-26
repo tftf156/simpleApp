@@ -11,6 +11,7 @@ import com.example.gallery.GridView.GridViewActivity;
 import com.example.simpleapp.R;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.util.Log;
@@ -36,9 +37,9 @@ public class FileListActivity extends ListActivity {
 		super.onStart();
 		
 		dir = new ArrayList<Albumb>();
-		currentDir = new File("/sdcard/DCIM/");
+		currentDir = new File(Environment.getExternalStorageDirectory().toString() + "/DCIM/");
 		fill(currentDir);
-		currentDir = new File("/sdcard/Pictures/");
+		currentDir = new File(Environment.getExternalStorageDirectory().toString() + "/Pictures/");
 		fill(currentDir);
 		
 		adapter = new FileArrayAdapter(FileListActivity.this, R.layout.filelist, dir);
@@ -47,10 +48,8 @@ public class FileListActivity extends ListActivity {
 
 	private void fill(File f) {
 		File[] dirs = f.listFiles();
-		Integer numberInteger = dirs.length;
-		Log.e("file number", numberInteger.toString());
 		this.setTitle("Current Dir: " + f.getName());
-		List<Albumb> fls = new ArrayList<Albumb>();
+		new ArrayList<Albumb>();
 		char firstChar;
 		int buf;
 		String name;
@@ -61,9 +60,7 @@ public class FileListActivity extends ListActivity {
 		String[] spaceStrings;
 		String num_item;
 		Integer count = 0;
-		ArrayList<String> nameStrings = new ArrayList<String>();
-		Integer index;
-		
+		new ArrayList<String>();
 		try {
 			for (File ff : dirs) {
 				name = ff.getName();
@@ -151,6 +148,7 @@ public class FileListActivity extends ListActivity {
 			//fill(currentDir);
 			intent = new Intent(FileListActivity.this, GridViewActivity.class);
 			intent.putExtra("path", o.getPath());
+			dir.clear();
 			startActivity(intent);
 		}
 	}

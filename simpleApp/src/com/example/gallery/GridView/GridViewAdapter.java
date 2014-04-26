@@ -15,6 +15,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -150,6 +151,20 @@ public class GridViewAdapter extends ArrayAdapter<ImageItem>{
 		changeColor(gridView);
 		
 		notifyDataSetChanged();
+	}
+	
+	public ArrayList<String> getSelectedImagePath()
+	{
+		ArrayList<String> resultArrayList = new ArrayList<>();
+		for(int i = 0; i < data.size(); i++)
+		{
+			if(imageSelect.elementAt(i))
+			{
+				resultArrayList.add(data.get(i).getPath());
+				Log.e("path", data.get(i).getPath());
+			}
+		}
+		return resultArrayList;
 	}
 
 	static class ViewHolder {

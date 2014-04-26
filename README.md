@@ -7,6 +7,8 @@
 
 com.example.simpleApp：
 	MainActivity--主頁面
+	ShareToFB--分享到FB
+	BroadcastReceiver--分享到FB結果
 
 com.example.camera：
 	CameraActivity--照相
@@ -21,6 +23,8 @@ com.example.gallery：
 		GridViewActivity--以GridView的樣式列出照片
 		GridViewAdapter--GridView Adapter
 		ImageItem--自訂物件
+		DeleteAertDialog--刪除圖片時的題是視窗
+		ShrinkImage--製作縮圖
 
 com.example.upload：
 	UploadActiviry--上傳
