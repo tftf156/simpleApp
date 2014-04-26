@@ -15,11 +15,12 @@
 +	FilterActivity--濾鏡
 
 #<h4>com.example.gallery：<h4/>
-	<h5>FileList：<h5/>
+<h5>FileList：<h5/>
 > +		Album--自訂物件
 +		FileArrayAdapter--FileList Adapter
 +		FileListActivity--列出有照片的資料夾
-	<h5>GridView：<h5/>
+
+<h5>GridView：<h5/>
 > +		GridViewActivity--以GridView的樣式列出照片
 +		GridViewAdapter--GridView Adapter
 +		ImageItem--自訂物件
