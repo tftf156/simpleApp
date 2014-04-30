@@ -41,5 +41,15 @@
 +	gridview--GridView
 +	row_grid--GirdView每格的內容layout
 
+#<h4>com.example.wifi：<h4/>
+> +	ConnectDevicesTabWidgetActivity--顯示有WIDI的wifiList
+> +	RecieveListTabWidgetActivity--顯示已接收的List
+> +	SendFileActivity--傳送資料
+> +	WifiActivity--Wifi傳輸的主頁面
+
+#<h4>com.example.gallery：<h4/>
+> +	ChopImageActivity--裁切圖片
+
+
 
 
