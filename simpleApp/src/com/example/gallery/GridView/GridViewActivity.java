@@ -3,6 +3,7 @@ package com.example.gallery.GridView;
 import java.io.File;
 import java.util.ArrayList;
 
+import com.example.gallery.ChopPhotoActivity;
 import com.example.simpleapp.R;
 import com.example.simpleapp.ShareToFB;
 import com.facebook.AppEventsLogger;
@@ -89,13 +90,15 @@ public class GridViewActivity extends Activity{
 		deleteFrameLayout = (FrameLayout) findViewById(R.id.deleteFrameLayout);
 		deleteFrameLayout.setOnClickListener(deleteClickListener);
 		
-		 canPresentShareDialogWithPhotos = FacebookDialog.canPresentShareDialog(this,
+		canPresentShareDialogWithPhotos = FacebookDialog.canPresentShareDialog(this,
 	                FacebookDialog.ShareDialogFeature.PHOTOS);
-	     shareToFB = new ShareToFB(GridViewActivity.this, uiHelper, canPresentShareDialogWithPhotos);
-	        
-		
+	    shareToFB = new ShareToFB(GridViewActivity.this, uiHelper, canPresentShareDialogWithPhotos);
+	    
 		shareFrameLayout = (FrameLayout) findViewById(R.id.shareFrameLayout);
 		shareFrameLayout.setOnClickListener(shareClickListener);
+		
+		chopFrameLayout = (FrameLayout) findViewById(R.id.chopFrameLayout);
+		chopFrameLayout.setOnClickListener(chopClickListener);
 	}
 	
 	@Override
@@ -168,7 +171,10 @@ public class GridViewActivity extends Activity{
 		
 		@Override
 		public void onClick(View v) {
-			
+			Intent intent = new Intent();
+			intent.setClass(GridViewActivity.this, ChopPhotoActivity.class);
+			intent.putExtra("image path", customGridAdapter.getSelectedImagePath());
+			startActivity(intent);
 		}
 	};
 
@@ -182,7 +188,8 @@ public class GridViewActivity extends Activity{
 		for (File file : dirs)
 		{
 			spaceStrings = file.getName().split("\\.");
-			if(spaceStrings[spaceStrings.length - 1].equals("jpg"))
+			if(spaceStrings[spaceStrings.length - 1].equals("jpg") || 
+					spaceStrings[spaceStrings.length - 1].equals("png"))
 			{
 				Bitmap bitmap = shrinkImage.getBitmap(Uri.fromFile(file));
 				imageItems.add(new ImageItem(bitmap, file.getName(), file.getAbsolutePath()));

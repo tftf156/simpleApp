@@ -1,0 +1,86 @@
+1.增加
+    private final String PENDING_ACTION_BUNDLE_KEY = "自己定";
+    private PendingAction pendingAction = PendingAction.NONE;
+    private boolean canPresentShareDialogWithPhotos;
+    private ShareToFB shareToFB;
+    private UiLifecycleHelper uiHelper;
+    
+    private enum PendingAction {
+        NONE,
+        POST_PHOTO,
+        POST_STATUS_UPDATE
+    }
+    
+    private Session.StatusCallback callback = new Session.StatusCallback() {
+        @Override
+        public void call(Session session, SessionState state, Exception exception) {
+            onSessionStateChange(session, state, exception);
+        }
+    };
+
+2.增加在setContextView之前
+	uiHelper = new UiLifecycleHelper(this, callback);
+        uiHelper.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            String name = savedInstanceState.getString(PENDING_ACTION_BUNDLE_KEY);
+            pendingAction = PendingAction.valueOf(name);
+        }
+
+3.放在你要動作的物件前
+	    canPresentShareDialogWithPhotos = FacebookDialog.canPresentShareDialog(this,
+	                FacebookDialog.ShareDialogFeature.PHOTOS);
+	    shareToFB = new ShareToFB(Activity activity, UiLifecycleHelper uiHelper,
+    		boolean canPresentShareDialogWithPhotos);
+
+4.新增下列函式
+    @Override
+    protected void onResume() {
+        super.onResume();
+        uiHelper.onResume();
+
+        // Call the 'activateApp' method to log an app event for use in analytics and advertising reporting.  Do so in
+        // the onResume methods of the primary Activities that an app may be launched into.
+        AppEventsLogger.activateApp(this);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        uiHelper.onSaveInstanceState(outState);
+
+        outState.putString(PENDING_ACTION_BUNDLE_KEY, pendingAction.name());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        uiHelper.onActivityResult(requestCode, resultCode, data, shareToFB.dialogCallback);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        uiHelper.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        uiHelper.onDestroy();
+    }
+
+    private void onSessionStateChange(Session session, SessionState state, Exception exception) {
+        if (pendingAction != PendingAction.NONE &&
+                (exception instanceof FacebookOperationCanceledException ||
+                exception instanceof FacebookAuthorizationException)) {
+                new AlertDialog.Builder(GridViewActivity.this)
+                    .setTitle(R.string.cancelled)
+                    .setMessage(R.string.permission_not_granted)
+                    .setPositiveButton(R.string.ok, null)
+                    .show();
+            pendingAction = PendingAction.NONE;
+        } 
+    }
+
+5.在你要動作的地方呼叫ShareToFb的onClickPostPhoto(ArrayList<String> Path)，Path請給絕對位置

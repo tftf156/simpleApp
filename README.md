@@ -7,8 +7,7 @@
 
 #<h4>com.example.simpleApp：<h4/>
 > +	MainActivity--主頁面
-+	ShareToFB--分享到FB
-> > + 使用方式請看ShareToFB使用方式.txt
++	ShareToFB--分享到FB	使用方式請看ShareToFB使用方式.txt
 +	BroadcastReceiver--分享到FB結果
 
 #<h4>com.example.camera：<h4/>
