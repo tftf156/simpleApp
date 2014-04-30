@@ -8,6 +8,7 @@
 #<h4>com.example.simpleApp：<h4/>
 > +	MainActivity--主頁面
 +	ShareToFB--分享到FB
+> > + 使用方式請看ShareToFB使用方式.txt
 +	BroadcastReceiver--分享到FB結果
 
 #<h4>com.example.camera：<h4/>
@@ -26,12 +27,6 @@
 +		ImageItem--自訂物件
 +		DeleteAertDialog--刪除圖片時的題是視窗
 +		ShrinkImage--製作縮圖
-
-#<h4>com.example.upload：<h4/>
-> +	UploadActiviry--上傳
-
-#<h4>com.example.transport：<h4/>
-> +	TransportActivity--傳輸
 
 #<h4>layout：<h4/>
 > +	activity_main--主頁面

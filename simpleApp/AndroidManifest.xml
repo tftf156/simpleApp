@@ -47,11 +47,6 @@
             android:label="@string/title_activity_chop_photo" >
         </activity>
         
-        <!-- Upload is activity -->
-        <activity
-            android:name="com.example.upload.UploadActivity"
-            android:label="UploadActivity" />
-        
         <!-- Wifi is activity -->
         <activity
             android:name="com.example.wifi.WifiActivity"
