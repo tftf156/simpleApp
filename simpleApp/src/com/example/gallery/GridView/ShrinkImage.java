@@ -6,6 +6,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.util.Log;
 
 public class ShrinkImage {
 
@@ -33,6 +34,9 @@ public class ShrinkImage {
  
             Bitmap bmp = BitmapFactory.decodeStream(in, null, opts);
             in.close();
+            Integer widthInteger = bmp.getWidth();
+            Integer heightInteger = bmp.getHeight();
+            Log.e("w * h", widthInteger+"*"+heightInteger);
  
             return bmp;
         } 

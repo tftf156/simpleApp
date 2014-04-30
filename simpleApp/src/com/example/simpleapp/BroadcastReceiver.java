@@ -17,5 +17,7 @@ public class BroadcastReceiver extends FacebookBroadcastReceiver {
     protected void onFailedAppCall(String appCallId, String action, Bundle extras) {
         // A real app could update UI or notify the user that their photo was not uploaded.
         Log.d("HelloFacebook", String.format("Photo uploaded by call " + appCallId + " failed."));
+        Log.e("action", action);
+        Log.e("bundle", extras.toString());
     }
 }

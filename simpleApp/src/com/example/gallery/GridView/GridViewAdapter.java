@@ -161,7 +161,6 @@ public class GridViewAdapter extends ArrayAdapter<ImageItem>{
 			if(imageSelect.elementAt(i))
 			{
 				resultArrayList.add(data.get(i).getPath());
-				Log.e("path", data.get(i).getPath());
 			}
 		}
 		return resultArrayList;
