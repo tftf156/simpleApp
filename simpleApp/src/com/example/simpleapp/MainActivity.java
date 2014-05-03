@@ -1,7 +1,9 @@
 package com.example.simpleapp;
 
+import com.example.camera.CameraActivity;
 import com.example.gallery.FileList.FileListActivity;
 import com.example.wifi.*;
+
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
@@ -13,12 +15,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class MainActivity extends ActionBarActivity {
 
-	Button goToCameraButton;
-	Button fileManagerButton;
-	Button wifiDirectButton;
+	private ImageView cameraImageView;
+	private ImageView galleryImageView;
+	private ImageView wifiImageView;
+	private ClickListener clickListener;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,38 +34,17 @@ public class MainActivity extends ActionBarActivity {
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}*/		
 		
-		goToCameraButton = (Button)findViewById(R.id.cameraBtn);
-		fileManagerButton = (Button)findViewById(R.id.fileBtn);
-		wifiDirectButton = (Button)findViewById(R.id.wifiBtn);
+		cameraImageView = (ImageView) findViewById(R.id.cameraImageView);
+		galleryImageView = (ImageView) findViewById(R.id.galleryImageView);
+		wifiImageView = (ImageView) findViewById(R.id.wifiImageView);
+		clickListener = new ClickListener(MainActivity.this);
 		
-		goToCameraButton.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				
-			}
-		});
-		
-		fileManagerButton.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, FileListActivity.class);
-				startActivity(intent);
-			}
-		});
-		
-		wifiDirectButton.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent();
-				//intent.setClass(MainActivity.this, ChopPhotoActivity.class);
-				intent.setClass(MainActivity.this, WifiActivity.class);
-				startActivity(intent);
-			}
-		});
+		cameraImageView.setOnClickListener(
+				clickListener.intentClickListener(MainActivity.this, CameraActivity.class));
+		galleryImageView.setOnClickListener(
+				clickListener.intentClickListener(MainActivity.this, FileListActivity.class));
+		wifiImageView.setOnClickListener(
+				clickListener.intentClickListener(MainActivity.this, WifiActivity.class));
 	}
 	
 	@Override
