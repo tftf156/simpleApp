@@ -9,7 +9,6 @@ import com.example.simpleapp.R;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -78,6 +77,8 @@ public class GridViewAdapter extends ArrayAdapter<ImageItem>{
 		ImageItem item = data.get(position);
 		holder.imageTitle.setText(item.getTitle());
 		holder.image.setImageDrawable(makeBmp(position, imageSelect.elementAt(position)));
+		Integer integer = position;
+		Log.e(item.getTitle(), integer.toString());
 		//holder.image.setImageBitmap(item.getImage());
 		return row;
 	}
@@ -88,40 +89,36 @@ public class GridViewAdapter extends ArrayAdapter<ImageItem>{
 		int height = data.get(id).getImage().getHeight();
 		Bitmap spaceBitmap = Bitmap.createBitmap(width, height, Config.ARGB_8888);
         // 根据isChosen来选取对勾的图片    
-        Bitmap seletedBmp;    
-        if(isChosen == true)    
-                seletedBmp = BitmapFactory.decodeResource(context.getResources(),    
-                                R.drawable.yes);    
-        else 
-                seletedBmp = BitmapFactory.decodeResource(context.getResources(),    
-                                R.drawable.no);    
-             
-        // 产生叠加图    
-        Drawable[] array = new Drawable[3];
-        array[0] = new BitmapDrawable(spaceBitmap);
-        array[1] = new BitmapDrawable(data.get(id).getImage());    
-        array[2] = new BitmapDrawable(seletedBmp);    
-        LayerDrawable la = new LayerDrawable(array);    
-        la.setLayerInset(0, 0, 0, 0, 0);    
-        la.setLayerInset(1, 20, 0, 0, 0);
-        la.setLayerInset(2, -10, -5, 40, 45); 
-                
-        return la;    //返回叠加后的图    
-	}
-	
-	private void changeColor(GridView gridView)
-	{
-		for(int i = 0; i < imageSelect.size(); i++)
-			if(imageSelect.elementAt(i))
-				gridView.getChildAt(i).setBackgroundColor(Color.argb(128, 0, 171, 234));
-			else
-				gridView.getChildAt(i).setBackgroundColor(Color.argb(0, 0, 0, 0));
+        Bitmap seletedBmp;
+
+        
+        if(isChosen == true)
+        {
+        	Drawable[] array = new Drawable[2];
+        	seletedBmp = BitmapFactory.decodeResource(context.getResources(), R.drawable.yes);
+        	array[0] = new BitmapDrawable(data.get(id).getImage());    
+            array[1] = new BitmapDrawable(seletedBmp);    
+            LayerDrawable la = new LayerDrawable(array);    
+            la.setLayerInset(0, 0, 0, 0, 0);    
+            la.setLayerInset(1, 0, 0, 0, 0);
+            
+            return la;
+        }
+        else
+        {
+        	Drawable[] array = new Drawable[1];
+        	array[0] = new BitmapDrawable(data.get(id).getImage());    
+            LayerDrawable la = new LayerDrawable(array);    
+            la.setLayerInset(0, 0, 0, 0, 0);
+            
+            return la;
+        }
 	}
 	
 	public void changeState(int position, GridView gridView)
 	{    
 		imageSelect.setElementAt(!imageSelect.elementAt(position), position);
-		changeColor(gridView);
+		//changeColor(gridView);
 		
 		notifyDataSetChanged();
 	}
@@ -148,7 +145,7 @@ public class GridViewAdapter extends ArrayAdapter<ImageItem>{
 				i--;
 			}
 		}
-		changeColor(gridView);
+		//changeColor(gridView);
 		
 		notifyDataSetChanged();
 	}

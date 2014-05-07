@@ -34,9 +34,6 @@ public class ShrinkImage {
  
             Bitmap bmp = BitmapFactory.decodeStream(in, null, opts);
             in.close();
-            Integer widthInteger = bmp.getWidth();
-            Integer heightInteger = bmp.getHeight();
-            Log.e("w * h", widthInteger+"*"+heightInteger);
  
             return bmp;
         } 
