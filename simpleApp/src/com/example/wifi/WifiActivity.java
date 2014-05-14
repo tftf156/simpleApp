@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +21,7 @@ public class WifiActivity extends TabActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_wifi);
+		
 
 		initView();
 		//if (savedInstanceState == null) {
@@ -46,6 +48,14 @@ public class WifiActivity extends TabActivity {
 		thost.addTab(ts2);
 		
 		thost.setCurrentTab(0);
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		Log.d("123", "22");
+	    android.app.Fragment fragment = getFragmentManager().findFragmentById(R.id.device_details);
+	    fragment.onActivityResult(requestCode, resultCode, data);
 	}
 	
 	@Override

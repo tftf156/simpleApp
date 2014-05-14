@@ -3,5 +3,7 @@
     <color name="blue">#00abea</color>
     <color name="white">#ffffff</color>
     <color name="black">#80000000</color>
+    <color name="status_bar_color">#FF000000</color>
+    <color name="layout_border_color">#FF111111</color>
     
 </resources>

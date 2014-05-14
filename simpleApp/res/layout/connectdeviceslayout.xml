@@ -3,25 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/selfDeviceTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="53dp"
-        android:text="本端機器"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/WifiSearchImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/shareImageButton"
+        android:layout_alignBottom="@+id/WifiToggleImageButton"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/shareImageButton"
-        android:src="@drawable/searchicon" />
+        android:layout_alignTop="@+id/WifiToggleImageButton"
+        android:clickable="false"
+        android:src="@drawable/searchicon" 
+        android:onClick="onSearchButtonClicked"/>
 
     <View
         android:id="@+id/view1"
@@ -30,7 +21,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/selfDeviceTextView"
         android:background="#000000" />
-
+<!--  
     <TextView
         android:id="@+id/selfDeviceNameTextView"
         android:layout_width="wrap_content"
@@ -69,41 +60,67 @@
         android:layout_alignLeft="@+id/selfNametextView"
         android:text="Status"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
+-->
     <ImageButton
-        android:id="@+id/shareImageButton"
+        android:id="@+id/WifiToggleImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/view1"
-        android:layout_toLeftOf="@+id/imageButton2"
+        android:layout_toLeftOf="@+id/WifiSearchImageButton"
         android:src="@drawable/wifiicon" />
-
-    <TextView
-        android:id="@+id/friendDeviceTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/selfDeviceStatusTextView"
-        android:layout_below="@+id/selfDeviceStatusTextView"
-        android:layout_marginTop="14dp"
-        android:text="遠端節點"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <View
         android:id="@+id/View01"
         android:layout_width="fill_parent"
         android:layout_height="2dp"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/friendDeviceTextView"
+        android:layout_below="@+id/frag_list"
         android:background="#000000" />
-
+<!--  
     <GridView
         android:id="@+id/gridView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/View01"
-        android:numColumns="3" >
+        android:numColumns="3">
 
     </GridView>
+-->
+    <ToggleButton
+        android:id="@+id/WifiToggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/WifiToggleImageButton"
+        android:text="Wifi" 
+        android:textOn="Wifi On"
+		android:textOff="Wifi Off"
+		android:onClick="onWifiToggleClicked"/>
+
+    <fragment
+        android:id="@+id/frag_list"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/phone_list_height"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/view1"
+        class="com.example.wifi.DeviceListFragment" />
+
+    <fragment
+        android:id="@+id/frag_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/View01"
+        class="com.example.wifi.DeviceDetailFragment" />
+
+    <TextView
+        android:id="@+id/selfDeviceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/WifiToggleButton"
+        android:text="Device Info."
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

@@ -44,6 +44,9 @@
 #<h4>com.example.gallery：<h4/>
 > +	ChopImageActivity--裁切圖片
 
+#<h4>com.example.gallery：<h4/>
+> +	Wifi Direct 全功能完成
+
 
 
 
