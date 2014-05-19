@@ -11,11 +11,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class ChopPhotoActivity extends ActionBarActivity {
+	String ImgPath;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_chop_photo);
+		
+		Bundle extras = getIntent().getExtras();
+		if (extras != null) {
+			ImgPath = extras.getString("image path");
+		}
+		
+		
 
 		//if (savedInstanceState == null) {
 		//	getSupportFragmentManager().beginTransaction()

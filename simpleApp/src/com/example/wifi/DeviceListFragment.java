@@ -37,6 +37,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * A ListFragment that displays available peers on discovery and requests the
@@ -48,6 +50,7 @@ public class DeviceListFragment extends ListFragment implements PeerListListener
     ProgressDialog progressDialog = null;
     View mContentView = null;
     private WifiP2pDevice device;
+    Timer timer = new Timer(true);
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -181,14 +184,18 @@ public class DeviceListFragment extends ListFragment implements PeerListListener
         if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
+        Timer time = new Timer(true);
+        timer.schedule(new timerTask(), 10000, 1000);
         progressDialog = ProgressDialog.show(getActivity(), "Press back to cancel", "finding peers", true,
                 true, new DialogInterface.OnCancelListener() {
+        	
 
                     @Override
                     public void onCancel(DialogInterface dialog) {
                         
                     }
                 });
+        
     }
 
     /**
@@ -205,5 +212,19 @@ public class DeviceListFragment extends ListFragment implements PeerListListener
 
         void disconnect();
     }
+    
+    public class timerTask extends TimerTask
+    {
+      public void run()
+      {
+    	  progressDialog.dismiss();
+      }
+    };
+    
 
 }
+
+
+
+
+
