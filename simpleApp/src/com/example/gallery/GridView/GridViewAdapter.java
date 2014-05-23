@@ -162,6 +162,19 @@ public class GridViewAdapter extends ArrayAdapter<ImageItem>{
 		}
 		return resultArrayList;
 	}
+	
+	public String getSelectedSingleImagePath()
+	{
+		String ImgPath = new String();
+		for(int i = 0; i < data.size(); i++)
+		{
+			if(imageSelect.elementAt(i))
+			{
+				ImgPath = data.get(i).getPath();
+			}
+		}
+		return ImgPath;
+	}
 
 	static class ViewHolder {
 		TextView imageTitle;

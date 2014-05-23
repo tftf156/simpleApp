@@ -48,7 +48,7 @@ public class GridViewActivity extends Activity{
     private ShareToFB shareToFB;
     private UiLifecycleHelper uiHelper;
     
-    private enum PendingAction {
+    public enum PendingAction {
         NONE,
         POST_PHOTO,
         POST_STATUS_UPDATE
@@ -173,7 +173,7 @@ public class GridViewActivity extends Activity{
 		public void onClick(View v) {
 			Intent intent = new Intent();
 			intent.setClass(GridViewActivity.this, ChopPhotoActivity.class);
-			intent.putExtra("image path", customGridAdapter.getSelectedImagePath());
+			intent.putExtra("image path", customGridAdapter.getSelectedSingleImagePath());
 			startActivity(intent);
 		}
 	};
