@@ -167,8 +167,14 @@ public class CropImage extends MonitoredActivity {
         findViewById(R.id.discard).setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View v) {
-
-                        setResult(RESULT_CANCELED);
+                    	
+                    	//Bundle extras = new Bundle();
+                        Intent intent = new Intent(mSaveUri.toString());
+                        //intent.putExtras(extras);
+                        intent.putExtra(IMAGE_PATH, mImagePath);
+                        setResult(RESULT_CANCELED, intent);
+                        
+                        //setResult(RESULT_CANCELED);
                         finish();
                     }
                 });

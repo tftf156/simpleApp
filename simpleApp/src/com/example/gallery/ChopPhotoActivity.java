@@ -47,6 +47,7 @@ public class ChopPhotoActivity extends ActionBarActivity {
 	private boolean canPresentShareDialogWithPhotos;
 	final int PIC_CROP = 1;
 	public static final int REQUEST_CODE_CROP_IMAGE   = 0x3;
+	public static final int DISCARD   = 0x4;
 	private Spinner RatioSpinner;
 	private String array_spinner[];
 	int aspectX;
@@ -173,9 +174,9 @@ public class ChopPhotoActivity extends ActionBarActivity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	    super.onActivityResult(requestCode, resultCode, data);
-	    Log.d("123","123123");
+	    //Log.d("123","123123");
 	    
-	    Bitmap bitmap;
+	    //Bitmap bitmap;
 
         switch (requestCode) {
             case REQUEST_CODE_CROP_IMAGE:
